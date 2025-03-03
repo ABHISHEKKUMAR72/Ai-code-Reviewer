@@ -1,0 +1,220 @@
+/* Welcome Page Styles */
+.welcome-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #1a1a1a, #0a0a0a); /* Dark gradient background */
+  color: #fff;
+  font-family: 'Inter', sans-serif; /* Modern font */
+  text-align: center;
+  overflow: hidden;
+}
+
+.welcome-page h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  background: linear-gradient(45deg, #00fffc, #00b3ff); /* Gradient text */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: text-gradient 3s ease infinite;
+}
+
+@keyframes text-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* From Uiverse.io by Spacious74 */
+.welcome-page button,
+main .left .review {
+  font-size: 1.4em;
+  padding: 0.6em 0.8em;
+  border-radius: 0.5em;
+  border: none;
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 2px 2px 3px #000000b4;
+  position: relative;
+  z-index: 1;
+}
+
+.welcome-page .container,
+main .left .review-container {
+  position: relative;
+  padding: 3px;
+  background: linear-gradient(90deg, #03a9f4, #f441a5);
+  border-radius: 0.9em;
+  transition: all 0.4s ease;
+  display: inline-block; /* Ensure the container wraps the button */
+}
+
+.welcome-page .container::before,
+main .left .review-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  border-radius: 0.9em;
+  z-index: -10;
+  filter: blur(0);
+  transition: filter 0.4s ease;
+}
+
+.welcome-page .container:hover::before,
+main .left .review-container:hover::before {
+  background: linear-gradient(90deg, #03a9f4, #f441a5);
+  filter: blur(1.2em);
+}
+
+.welcome-page .container:active::before,
+main .left .review-container:active::before {
+  filter: blur(0.2em);
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.welcome-page button,
+main .left .review {
+  animation: pulse 2s infinite;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .welcome-page h1 {
+    font-size: 2.5rem; /* Smaller font size for mobile */
+  }
+
+  .welcome-page button,
+  main .left .review {
+    font-size: 1.2em;
+    padding: 0.5em 0.7em;
+  }
+}
+
+@media (max-width: 480px) {
+  .welcome-page h1 {
+    font-size: 2rem; /* Even smaller font size for very small devices */
+  }
+
+  .welcome-page button,
+  main .left .review {
+    font-size: 1em;
+    padding: 0.4em 0.6em;
+  }
+}
+
+/* Existing Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+}
+
+main {
+  height: 100%;
+  width: 100%;
+  padding: 1.5rem;
+  display: flex;
+  gap: 1rem;
+}
+
+main .left, main .right {
+  height: 100%;
+  flex-basis: 50%;
+  border-radius: 0.7rem;
+}
+
+main .left {
+  background-color: #000000;
+  position: relative;
+}
+
+.left .code, .code pre, .code pre code {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  border-radius: 0.7rem;
+  background-color: #0c0c0c;
+}
+
+main .left .review {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  background-color: rgb(219, 219, 255);
+  color: #000000;
+  padding: 0.5rem 2rem;
+  font-weight: 500;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 0.7rem;
+  transition: background-color 0.3s ease;
+}
+
+main .left .review:hover {
+  background-color: rgb(180, 180, 255);
+}
+
+main .left .review.loading {
+  background-color: rgb(180, 180, 255);
+  cursor: not-allowed;
+}
+
+/* Spinner CSS */
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #000000;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+main .right {
+  background-color: #343434;
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  overflow: auto;
+}
+
+/* Style for the placeholder text */
+.react-simple-code-editor__textarea::placeholder {
+  color: #888; /* Gray color for placeholder text */
+  font-style: italic; /* Italicize the placeholder text */
+}

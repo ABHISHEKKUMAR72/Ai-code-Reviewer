@@ -1,0 +1,413 @@
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+}
+
+main {
+  height: 100%;
+  width: 100%;
+  padding: 1.5rem;
+  display: flex;
+  gap: 1rem;
+}
+
+/* Welcome Page Styles */
+.welcome-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #1a1a1a, #0a0a0a); /* Dark gradient background */
+  color: #fff;
+  font-family: 'Inter', sans-serif; /* Modern font */
+  text-align: center;
+  overflow: hidden;
+}
+
+.welcome-page h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  background: linear-gradient(45deg, #00fffc, #00b3ff); /* Gradient text */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: text-gradient 3s ease infinite;
+}
+
+@keyframes text-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Button Styles */
+.btn {
+  padding: 1rem 2rem;
+  font-weight: 700;
+  background: rgb(255, 255, 255);
+  color: blueviolet;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  border-bottom: 2px solid blueviolet;
+  border-right: 2px solid blueviolet;
+  border-top: 2px solid white;
+  border-left: 2px solid white;
+  transition-duration: 1s;
+  transition-property: border-top, border-left, border-bottom, border-right, box-shadow;
+}
+
+.btn:hover {
+  border-top: 2px solid blueviolet;
+  border-left: 2px solid blueviolet;
+  border-bottom: 2px solid rgb(238, 103, 238);
+  border-right: 2px solid rgb(238, 103, 238);
+  box-shadow: rgba(240, 46, 170, 0.4) 5px 5px,
+              rgba(240, 46, 170, 0.3) 10px 10px,
+              rgba(240, 46, 170, 0.2) 15px 15px;
+}
+
+/* Left Panel Styles */
+.left {
+  position: relative;
+  background-color: #000000;
+  border-radius: 0.7rem;
+  overflow: hidden;
+  height: 100vh;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.left .code {
+  flex: 1;
+  overflow: hidden; /* Changed from overflow-y: auto to prevent double scrollbars */
+  padding: 1rem;
+  background-color: #0c0c0c;
+  border-radius: 0.7rem;
+  position: relative;
+}
+
+.left .btn-container {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  z-index: 10;
+}
+
+.left .review-btn {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 10;
+}
+
+/* Right Panel Styles */
+.right {
+  background-color: #1e1e1e;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  overflow: auto;
+  color: #f8f8f2;
+  border-radius: 0.7rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 50%;
+}
+
+/* Code Block Styles */
+pre {
+  position: relative;
+  background-color: #282a36;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin: 1rem 0;
+  counter-reset: line;
+}
+
+pre code {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.9rem;
+  display: block;
+  position: relative;
+  padding-left: 3.5rem;
+  line-height: 1.5;
+}
+
+pre code .line {
+  display: block;
+  position: relative;
+}
+
+pre code .line::before {
+  content: attr(data-line-number);
+  position: absolute;
+  left: -3.5rem;
+  width: 3rem;
+  text-align: right;
+  color: #888;
+  user-select: none;
+}
+
+code {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.9rem;
+}
+
+/* Copy Button Styles */
+.copy-button {
+  display: none;
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background-color: #44475a;
+  color: #f8f8f2;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: background-color 0.3s ease;
+}
+
+.copy-button:hover {
+  background-color: #1648df;
+}
+
+pre:hover .copy-button {
+  display: block;
+}
+
+/* Markdown Content Styles */
+.markdown-content {
+  line-height: 1.6;
+}
+
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3,
+.markdown-content h4,
+.markdown-content h5,
+.markdown-content h6 {
+  color: #50fa7b;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.markdown-content p {
+  margin-bottom: 1rem;
+}
+
+.markdown-content a {
+  color: #8be9fd;
+  text-decoration: none;
+}
+
+.markdown-content a:hover {
+  text-decoration: underline;
+}
+
+.markdown-content ul,
+.markdown-content ol {
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.markdown-content li {
+  margin-bottom: 0.5rem;
+}
+
+.markdown-content blockquote {
+  border-left: 4px solid #6272a4;
+  padding-left: 1rem;
+  color: #6272a4;
+  margin: 1rem 0;
+}
+
+/* Reviewing Box Styles */
+.reviewing-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  background: #1a1a1a;
+  border-radius: 0.7rem;
+  text-align: center;
+}
+
+.reviewing-box p {
+  font-size: 1.5rem;
+  color: #34f8f5;
+  margin-top: 1rem;
+}
+
+/* Loader Styles */
+.loader {
+  transform: rotateZ(45deg);
+  perspective: 1000px;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  color: #fff;
+}
+
+.loader:before,
+.loader:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: inherit;
+  height: inherit;
+  border-radius: 50%;
+  transform: rotateX(70deg);
+  animation: 1s spin linear infinite;
+}
+
+.loader:after {
+  color: #FF3D00;
+  transform: rotateY(70deg);
+  animation-delay: 0.4s;
+}
+
+@keyframes spin {
+  0%, 100% {
+    box-shadow: 0.2em 0px 0 0px currentcolor;
+  }
+  12% {
+    box-shadow: 0.2em 0.2em 0 0 currentcolor;
+  }
+  25% {
+    box-shadow: 0 0.2em 0 0px currentcolor;
+  }
+  37% {
+    box-shadow: -0.2em 0.2em 0 0 currentcolor;
+  }
+  50% {
+    box-shadow: -0.2em 0 0 0 currentcolor;
+  }
+  62% {
+    box-shadow: -0.2em -0.2em 0 0 currentcolor;
+  }
+  75% {
+    box-shadow: 0px -0.2em 0 0 currentcolor;
+  }
+  87% {
+    box-shadow: 0.2em -0.2em 0 0 currentcolor;
+  }
+}
+
+/* Fixed Editor Panel Styles */
+.editor-container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+
+.editor-line-numbers {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3rem;
+  background-color: #1a1a1a;
+  overflow: hidden;
+  padding: 10px 0;
+  z-index: 1;
+  border-right: 1px solid #333;
+}
+
+.editor-line-number {
+  display: block;
+  height: 1.5rem;
+  line-height: 1.5;
+  color: #888;
+  font-size: 0.875rem;
+  text-align: right;
+  padding-right: 0.5rem;
+  user-select: none;
+}
+
+/* Fix for the react-simple-code-editor */
+.react-simple-code-editor {
+  min-height: 100%;
+  width: 100%;
+  overflow: auto !important;
+}
+
+.editor-textarea {
+  min-height: 100% !important;
+  padding-left: 3.5rem !important;
+  tab-size: 2;
+  font-family: 'Fira Code', monospace !important;
+  line-height: 1.5 !important;
+}
+
+.editor-preview {
+  padding-left: 3.5rem !important;
+  line-height: 1.5 !important;
+}
+
+/* Error Highlighting */
+.error-line {
+  background-color: #ff000020;
+  border-left: 2px solid #ff0000;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .welcome-page h1 {
+    font-size: 2.5rem;
+  }
+  .btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
+  main {
+    flex-direction: column;
+    padding: 1rem;
+  }
+  main .left,
+  main .right {
+    flex-basis: auto;
+    height: 50vh;
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .welcome-page h1 {
+    font-size: 2rem;
+  }
+  .btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+  .right {
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
+  .copy-button {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.7rem;
+  }
+}
